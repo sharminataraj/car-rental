@@ -6,8 +6,15 @@
     "year": 2024,
     "pricePerDay": 50,
     "available": true,
-    "image": null,
-    "description": "Comfortable mid-size sedan perfect for business or family"
+    "image": "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?w=400&h=300&fit=crop",
+    "description": "Comfortable mid-size sedan perfect for business or family",
+    "category": "Sedan",
+    "fuelType": "Gasoline",
+    "transmission": "Automatic",
+    "seatingCapacity": 5,
+    "luggageCapacity": "3 suitcases",
+    "weeklyPrice": 320,
+    "conditionRating": 4
   },
   {
     "id": 2,
@@ -16,8 +23,15 @@
     "year": 2023,
     "pricePerDay": 45,
     "available": true,
-    "image": null,
-    "description": "Reliable and fuel-efficient compact car"
+    "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=300&fit=crop",
+    "description": "Reliable and fuel-efficient compact car",
+    "category": "Economy",
+    "fuelType": "Gasoline",
+    "transmission": "CVT",
+    "seatingCapacity": 5,
+    "luggageCapacity": "2 suitcases",
+    "weeklyPrice": 280,
+    "conditionRating": 5
   },
   {
     "id": 3,
@@ -26,8 +40,15 @@
     "year": 2024,
     "pricePerDay": 80,
     "available": false,
-    "image": null,
-    "description": "Electric sedan with cutting-edge technology"
+    "image": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=400&h=300&fit=crop",
+    "description": "Electric sedan with cutting-edge technology",
+    "category": "Electric",
+    "fuelType": "Electric",
+    "transmission": "Automatic",
+    "seatingCapacity": 5,
+    "luggageCapacity": "3 suitcases",
+    "weeklyPrice": 500,
+    "conditionRating": 5
   },
   {
     "id": 4,
@@ -36,8 +57,15 @@
     "year": 2023,
     "pricePerDay": 75,
     "available": true,
-    "image": null,
-    "description": "Luxury sedan with premium features"
+    "image": "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop",
+    "description": "Luxury sedan with premium features",
+    "category": "Luxury",
+    "fuelType": "Gasoline",
+    "transmission": "Automatic",
+    "seatingCapacity": 5,
+    "luggageCapacity": "3 suitcases",
+    "weeklyPrice": 480,
+    "conditionRating": 4
   },
   {
     "id": 5,
@@ -46,8 +74,15 @@
     "year": 2024,
     "pricePerDay": 85,
     "available": true,
-    "image": null,
-    "description": "Elegant luxury vehicle for discerning drivers"
+    "image": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=300&fit=crop",
+    "description": "Elegant luxury vehicle for discerning drivers",
+    "category": "Luxury",
+    "fuelType": "Gasoline",
+    "transmission": "Automatic",
+    "seatingCapacity": 5,
+    "luggageCapacity": "3 suitcases",
+    "weeklyPrice": 530,
+    "conditionRating": 5
   },
   {
     "id": 6,
@@ -56,8 +91,15 @@
     "year": 2023,
     "pricePerDay": 70,
     "available": true,
-    "image": null,
-    "description": "Iconic American muscle car"
+    "image": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400&h=300&fit=crop",
+    "description": "Iconic American muscle car",
+    "category": "Sports",
+    "fuelType": "Gasoline",
+    "transmission": "Automatic",
+    "seatingCapacity": 4,
+    "luggageCapacity": "1 suitcase",
+    "weeklyPrice": 430,
+    "conditionRating": 4
   },
   {
     "id": 7,
@@ -66,8 +108,15 @@
     "year": 2024,
     "pricePerDay": 72,
     "available": true,
-    "image": null,
-    "description": "German engineering meets luxury"
+    "image": "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400&h=300&fit=crop",
+    "description": "German engineering meets luxury",
+    "category": "Luxury",
+    "fuelType": "Gasoline",
+    "transmission": "Automatic",
+    "seatingCapacity": 5,
+    "luggageCapacity": "3 suitcases",
+    "weeklyPrice": 450,
+    "conditionRating": 5
   },
   {
     "id": 8,
@@ -76,7 +125,48 @@
     "year": 2023,
     "pricePerDay": 42,
     "available": true,
-    "image": null,
-    "description": "Spacious and comfortable family sedan"
+    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop",
+    "description": "Spacious and comfortable family sedan",
+    "category": "Sedan",
+    "fuelType": "Gasoline",
+    "transmission": "CVT",
+    "seatingCapacity": 5,
+    "luggageCapacity": "3 suitcases",
+    "weeklyPrice": 260,
+    "conditionRating": 4
+  },
+  {
+    "id": 9,
+    "brand": "Jeep",
+    "model": "Wrangler",
+    "year": 2024,
+    "pricePerDay": 90,
+    "available": true,
+    "image": "https://images.unsplash.com/photo-1548708392-c8aef4d6c38a?w=400&h=300&fit=crop",
+    "description": "Off-road SUV perfect for adventures",
+    "category": "SUV",
+    "fuelType": "Gasoline",
+    "transmission": "Automatic",
+    "seatingCapacity": 4,
+    "luggageCapacity": "2 suitcases",
+    "weeklyPrice": 550,
+    "conditionRating": 5
+  },
+  {
+    "id": 10,
+    "brand": "Volkswagen",
+    "model": "Tiguan",
+    "year": 2023,
+    "pricePerDay": 65,
+    "available": true,
+    "image": "https://images.unsplash.com/photo-1596464714185-074b75d45947?w=400&h=300&fit=crop",
+    "description": "Compact SUV with great versatility",
+    "category": "SUV",
+    "fuelType": "Gasoline",
+    "transmission": "Automatic",
+    "seatingCapacity": 5,
+    "luggageCapacity": "3 suitcases",
+    "weeklyPrice": 400,
+    "conditionRating": 4
   }
 ]

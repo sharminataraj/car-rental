@@ -106,10 +106,15 @@ const VehicleManagement = () => {
       accessor: "brand",
       Cell: ({ row }) => (
         <div className="vehicle-cell">
+          {row.original.image && (
+            <div className="vehicle-image">
+              <img src={row.original.image} alt={`${row.original.brand} ${row.original.model}`} />
+            </div>
+          )}
           <div className="vehicle-info">
             <div className="vehicle-name">{row.original.brand} {row.original.model}</div>
             <div className="vehicle-details">
-              <span>{row.original.year} • {row.original.color}</span>
+              <span>{row.original.year} • {row.original.category}</span>
             </div>
           </div>
         </div>

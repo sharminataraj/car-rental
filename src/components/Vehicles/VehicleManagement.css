@@ -178,6 +178,24 @@ tbody tr:hover {
 
 .vehicle-cell {
   padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vehicle-image {
+  width: 60px;
+  height: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .vehicle-info {

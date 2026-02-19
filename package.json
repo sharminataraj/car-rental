@@ -41,6 +41,8 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2"
+    "@testing-library/react": "^16.3.2",
+    "puppeteer-core": "^24.37.5",
+    "serve": "^14.2.5"
   }
 }

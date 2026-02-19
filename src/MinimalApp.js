@@ -2,25 +2,29 @@ import React from "react";
 import "./App.css";
 
 function MinimalApp() {
-  console.log("MinimalApp is rendering");
+  console.log("MinimalApp is rendering!");
   
   return (
-    <div className="app">
-      <h1>Car Rental Dashboard</h1>
-      <p>This is a minimal version of the dashboard to test rendering</p>
-      <div className="content">
-        <div className="card">
-          <h2>Vehicle Management</h2>
-          <p>Manage your car fleet</p>
-        </div>
-        <div className="card">
-          <h2>Rental Management</h2>
-          <p>Create and manage rentals</p>
-        </div>
-        <div className="card">
-          <h2>Analytics</h2>
-          <p>View business analytics</p>
-        </div>
+    <div className="app" style={{ 
+      minHeight: '100vh', 
+      backgroundColor: '#f1f5f9',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: '24px',
+      color: '#333'
+    }}>
+      <h1>React App is Working!</h1>
+      <p>This is a minimal test to verify React is rendering correctly.</p>
+      <div style={{ 
+        marginTop: '20px', 
+        padding: '10px', 
+        backgroundColor: '#4CAF50', 
+        color: 'white', 
+        borderRadius: '5px' 
+      }}>
+        ✅ React is rendering successfully!
       </div>
     </div>
   );
