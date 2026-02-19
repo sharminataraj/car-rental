@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Injee Car Rental - React App" />
+    <title>Injee Car Rental</title>
+    <style>
+      .test-info {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        color: #333;
+        max-width: 300px;
+        z-index: 10000;
+      }
+      .test-info .success {
+        color: green;
+        font-weight: bold;
+      }
+      .test-info .error {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <div id="test-info" class="test-info" style="display: none;">
+      <strong>React App Test Results:</strong><br>
+      <div id="test-results"></div>
+    </div>
+    
+    <script>
+      // Simple test to check if app is rendering
+      window.addEventListener('load', function() {
+        console.log("Page loaded, checking app rendering...");
+        
+        const testInfo = document.getElementById('test-info');
+        const testResults = document.getElementById('test-results');
+        
+        // Show test info
+        testInfo.style.display = 'block';
+        
+        // Check if root has children within 3 seconds
+        setTimeout(() => {
+          const root = document.getElementById('root');
+          
+          if (!root) {
+            testResults.innerHTML = '<span class="error">Root div not found! React not initialized.</span>';
+            console.error("Root div not found!");
+            return;
+          }
+          
+          if (root.children.length === 0) {
+            testResults.innerHTML = '<span class="error">Root div is empty! React app not rendering.</span>';
+            console.error("Root div is empty!");
+          } else {
+            const childCount = root.children.length;
+            const firstChild = root.children[0];
+            testResults.innerHTML = `<span class="success">App rendering successfully!</span><br>Found ${childCount} child element(s).<br>First child: ${firstChild.tagName}`;
+            console.log(`Success! App is rendering with ${childCount} child elements.`);
+          }
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>

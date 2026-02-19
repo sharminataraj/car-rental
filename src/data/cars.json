@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2024,
+    "pricePerDay": 50,
+    "available": true,
+    "image": null,
+    "description": "Comfortable mid-size sedan perfect for business or family"
+  },
+  {
+    "id": 2,
+    "brand": "Honda",
+    "model": "Civic",
+    "year": 2023,
+    "pricePerDay": 45,
+    "available": true,
+    "image": null,
+    "description": "Reliable and fuel-efficient compact car"
+  },
+  {
+    "id": 3,
+    "brand": "Tesla",
+    "model": "Model 3",
+    "year": 2024,
+    "pricePerDay": 80,
+    "available": false,
+    "image": null,
+    "description": "Electric sedan with cutting-edge technology"
+  },
+  {
+    "id": 4,
+    "brand": "BMW",
+    "model": "3 Series",
+    "year": 2023,
+    "pricePerDay": 75,
+    "available": true,
+    "image": null,
+    "description": "Luxury sedan with premium features"
+  },
+  {
+    "id": 5,
+    "brand": "Mercedes",
+    "model": "C-Class",
+    "year": 2024,
+    "pricePerDay": 85,
+    "available": true,
+    "image": null,
+    "description": "Elegant luxury vehicle for discerning drivers"
+  },
+  {
+    "id": 6,
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 2023,
+    "pricePerDay": 70,
+    "available": true,
+    "image": null,
+    "description": "Iconic American muscle car"
+  },
+  {
+    "id": 7,
+    "brand": "Audi",
+    "model": "A4",
+    "year": 2024,
+    "pricePerDay": 72,
+    "available": true,
+    "image": null,
+    "description": "German engineering meets luxury"
+  },
+  {
+    "id": 8,
+    "brand": "Nissan",
+    "model": "Altima",
+    "year": 2023,
+    "pricePerDay": 42,
+    "available": true,
+    "image": null,
+    "description": "Spacious and comfortable family sedan"
+  }
+]
