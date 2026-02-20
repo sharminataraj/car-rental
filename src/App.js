@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LogoProvider } from "./contexts/LogoContext";
 import SimpleLayout from "./components/Dashboard/SimpleLayout";
 import UltraSimpleDashboard from "./pages/UltraSimpleDashboard";
 import DashboardHome from "./pages/DashboardHome";
@@ -34,114 +35,116 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-        
-        <Routes>
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <UltraSimpleDashboard />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/dashboard" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <DashboardHome />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/ultra" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <UltraSimpleDashboard />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/vehicles" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <VehicleManagement />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/rentals" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <RentalManagement />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/rentals/active" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <ActiveRentals />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/rentals/history" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <RentalHistory />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/analytics" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <Analytics />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/maintenance" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <Maintenance />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/settings" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <Settings />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/car-3d/:carId" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <Car3DRenderer />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/available-cars" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <AvailableCars />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-          <Route path="/my-bookings" element={
-            <ProtectedRoute>
-              <SimpleLayout onLogout={handleLogout}>
-                <MyBookings />
-              </SimpleLayout>
-            </ProtectedRoute>
-          } />
-        </Routes>
-      </div>
+      <LogoProvider>
+        <div className="app">
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          
+          <Routes>
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <UltraSimpleDashboard />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <DashboardHome />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/ultra" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <UltraSimpleDashboard />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/vehicles" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <VehicleManagement />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/rentals" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <RentalManagement />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/rentals/active" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <ActiveRentals />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/rentals/history" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <RentalHistory />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/analytics" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <Analytics />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/maintenance" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <Maintenance />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/settings" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <Settings />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/car-3d/:carId" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <Car3DRenderer />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/available-cars" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <AvailableCars />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/my-bookings" element={
+              <ProtectedRoute>
+                <SimpleLayout onLogout={handleLogout}>
+                  <MyBookings />
+                </SimpleLayout>
+              </ProtectedRoute>
+            } />
+          </Routes>
+        </div>
+      </LogoProvider>
     </Router>
   );
 }

@@ -307,6 +307,45 @@ const MyBookings = () => {
           )
         )}
       </div>
+
+      {/* Quick Actions */}
+      <div className="quick-actions-section">
+        <h2 className="quick-actions-title">Quick Actions</h2>
+        <div className="quick-actions-grid">
+          <button 
+            type="button"
+            className="quick-action-btn"
+            onClick={() => navigate('/vehicles')}
+          >
+            <span className="quick-action-icon">🚗</span>
+            <span className="quick-action-label">Add New Vehicle</span>
+          </button>
+          <button 
+            type="button"
+            className="quick-action-btn"
+            onClick={() => navigate('/rentals')}
+          >
+            <span className="quick-action-icon">📝</span>
+            <span className="quick-action-label">Create Rental</span>
+          </button>
+          <button 
+            type="button"
+            className="quick-action-btn"
+            onClick={() => navigate('/rentals')}
+          >
+            <span className="quick-action-icon">👤</span>
+            <span className="quick-action-label">View Customer</span>
+          </button>
+          <button 
+            type="button"
+            className="quick-action-btn"
+            onClick={() => navigate('/maintenance')}
+          >
+            <span className="quick-action-icon">🔧</span>
+            <span className="quick-action-label">Maintenance</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Logo } from "../Logo/Logo";
 import "./DashboardLayout.css";
 
 const SimpleLayout = ({ children, onLogout }) => {
@@ -16,10 +17,7 @@ const SimpleLayout = ({ children, onLogout }) => {
       <aside className="sidebar open">
         <div className="sidebar-header">
           <div className="logo">
-            <svg className="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M18.7 19.2c.2 0 .4-.1.5-.2.2-.2.3-.5.2-.7-.3-.6-.7-1.1-1.2-1.6L15 14.2V16c0 .3-.1.5-.3.7-.2.2-.5.3-.7.3H7c-.3 0-.5-.1-.7-.3-.2-.2-.3-.5-.3-.7V8c0-.3.1-.5.3-.7.2-.2.5-.3.7-.3h7c.3 0 .5.1.7.3.2.2.3.5.3.7v1.8l3-2.8c.5-.5.9-1.1 1.2-1.6.1-.2.1-.4.2-.7-.1-.3-.4-.5-.7-.5H4.7c-.3 0-.5.2-.7.5-.2.3-.2.6 0 .8L10 11.2V8.3L3.8 14c-.6.5-.9 1.3-.9 2 0 1.1.9 2 2 2h8c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7V14.2l2.7 2.4c.2.2.4.3.7.3z"/>
-            </svg>
-            <h4>InJee Rental</h4>
+            <Logo size="default" showName={true} />
           </div>
         </div>
 

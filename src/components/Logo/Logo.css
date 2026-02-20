@@ -1,0 +1,401 @@
+/* Logo Component Styles */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: white;
+}
+
+.logo-small {
+  gap: 8px;
+  font-size: 14px;
+}
+
+.logo-default {
+  gap: 12px;
+  font-size: 18px;
+}
+
+.logo-large {
+  gap: 16px;
+  font-size: 24px;
+}
+
+/* Logo Icon */
+.logo-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  flex-shrink: 0;
+}
+
+.logo-icon-small {
+  width: 24px;
+  height: 24px;
+}
+
+.logo-icon-default {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-icon-large {
+  width: 56px;
+  height: 56px;
+}
+
+/* Logo Image */
+.logo-image {
+  flex-shrink: 0;
+  object-fit: contain;
+  background: transparent;
+}
+
+.logo-image-small {
+  width: 24px;
+  height: 24px;
+}
+
+.logo-image-default {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-image-large {
+  width: 56px;
+  height: 56px;
+}
+
+/* Logo Text */
+.logo-text {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.logo-text-small {
+  font-size: 14px;
+}
+
+.logo-text-default {
+  font-size: 18px;
+}
+
+.logo-text-large {
+  font-size: 24px;
+}
+
+/* Hidden utility */
+.logo-icon-wrapper.hidden {
+  display: none !important;
+}
+
+/* Favicon */
+.favicon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.favicon-default {
+  width: 32px;
+  height: 32px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-default {
+    font-size: 16px;
+    gap: 8px;
+  }
+  
+  .logo-icon-default {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .logo-image-default {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-default {
+    font-size: 14px;
+  }
+  
+  .logo-text-default {
+    display: none;
+  }
+}
+
+/* Settings Panel Styles */
+.logo-settings {
+  padding: 20px;
+}
+
+.logo-settings-section {
+  margin-bottom: 32px;
+}
+
+.logo-settings-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-settings-section h3 svg {
+  width: 20px;
+  height: 20px;
+  color: #3b82f6;
+}
+
+/* Preset Grid */
+.logo-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.logo-preset-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.logo-preset-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.logo-preset-card.active {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.logo-preset-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+
+.logo-preset-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  text-align: center;
+}
+
+/* Upload Section */
+.logo-upload-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .logo-upload-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.logo-upload-card {
+  padding: 20px;
+  border: 2px dashed #e2e8f0;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+}
+
+.logo-upload-card:hover {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.logo-upload-card.has-image {
+  border-style: solid;
+  background: white;
+}
+
+.logo-upload-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.logo-upload-description {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.logo-upload-input {
+  display: none;
+}
+
+.logo-upload-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logo-upload-button:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.logo-upload-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.logo-preview {
+  margin-top: 12px;
+}
+
+.logo-preview-image {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.logo-preview-remove {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.logo-preview-remove:hover {
+  background: #dc2626;
+}
+
+/* Name Input */
+.logo-name-section {
+  margin-bottom: 32px;
+}
+
+.logo-name-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.logo-name-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Reset Button */
+.logo-reset-section {
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.logo-reset-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: white;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logo-reset-button:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.logo-reset-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Error Message */
+.logo-error {
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #dc2626;
+  font-size: 14px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-error svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Success Message */
+.logo-success {
+  padding: 12px 16px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  color: #16a34a;
+  font-size: 14px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-success svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
