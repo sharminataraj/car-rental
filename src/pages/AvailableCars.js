@@ -4,14 +4,14 @@ import { toast } from "react-toastify";
 import CarCard from "../components/CarCard";
 import BookingModal from "../components/Booking/BookingModal";
 import BookingConfirmation from "../components/Booking/BookingConfirmation";
-import carApi from "../services/api";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useBooking } from "../contexts/BookingContext";
+import carData from "../data/cars.json";
 import "./AvailableCars.css";
 
 const AvailableCars = () => {
   const navigate = useNavigate();
-  const { formatPrice, currency } = useCurrency();
+  const { formatPrice, currency, setCurrency } = useCurrency();
   const { getCarAvailability } = useBooking();
   
   // State management
@@ -55,9 +55,9 @@ const AvailableCars = () => {
   // Price ranges
   const priceRanges = [
     { id: "all", label: "All Prices", min: 0, max: Infinity },
-    { id: "budget", label: "Budget (Under $50)", min: 0, max: 50 },
-    { id: "mid", label: "Mid-Range ($50-$100)", min: 50, max: 100 },
-    { id: "premium", label: "Premium ($100+)", min: 100, max: Infinity }
+    { id: "budget", label: "Budget (Under ₹2,500)", min: 0, max: 2500 },
+    { id: "mid", label: "Mid-Range (₹2,500-₹5,000)", min: 2500, max: 5000 },
+    { id: "premium", label: "Premium (₹5,000+)", min: 5000, max: Infinity }
   ];
 
   // Sort options
@@ -77,7 +77,8 @@ const AvailableCars = () => {
   const loadCars = async () => {
     try {
       setLoading(true);
-      const data = await carApi.getCars();
+      // Use local data directly
+      const data = carData;
       setCars(data);
       
       // Set price range based on actual data
@@ -85,29 +86,22 @@ const AvailableCars = () => {
         const prices = data.map(car => car.pricePerDay);
         const min = Math.min(...prices);
         const max = Math.max(...prices);
-        setMinPrice(min);
-        setMaxPrice(max);
-        setPriceRange([min, max]);
+        setMinPrice(Math.floor(min * 83)); // Convert to INR (approx 83 INR per USD)
+        setMaxPrice(Math.ceil(max * 83));
+        setPriceRange([Math.floor(min * 83), Math.ceil(max * 83)]);
       }
       
       setError(null);
     } catch (err) {
       setError("Failed to load cars. Please try again.");
-      // Fallback to local data
-      const localData = require("../data/cars.json");
-      setCars(localData);
-      
-      if (localData.length > 0) {
-        const prices = localData.map(car => car.pricePerDay);
-        const min = Math.min(...prices);
-        const max = Math.max(...prices);
-        setMinPrice(min);
-        setMaxPrice(max);
-        setPriceRange([min, max]);
-      }
     } finally {
       setLoading(false);
     }
+  };
+
+  // Get USD price from INR
+  const getUSDPrice = (inrPrice) => {
+    return Math.round(inrPrice / 83);
   };
 
   // Filtered and sorted cars
@@ -129,9 +123,11 @@ const AvailableCars = () => {
       result = result.filter(car => car.category === selectedCategory);
     }
 
-    // Price range filter (using slider)
+    // Price range filter (using slider) - convert INR to USD for comparison
+    const minUSD = getUSDPrice(priceRange[0]);
+    const maxUSD = getUSDPrice(priceRange[1]);
     result = result.filter(car => 
-      car.pricePerDay >= priceRange[0] && car.pricePerDay <= priceRange[1]
+      car.pricePerDay >= minUSD && car.pricePerDay <= maxUSD
     );
 
     // Transmission filter
@@ -190,8 +186,7 @@ const AvailableCars = () => {
     }
     
     if (!getCarAvailability(car.id)) {
-      toast.warning("This car is already booked for the selected dates.");
-      return;
+      toast.warning("This car has existing bookings. Please check availability for your dates.");
     }
     
     setSelectedCar(car);
@@ -204,6 +199,18 @@ const AvailableCars = () => {
     setIsBookingModalOpen(false);
     setShowConfirmation(true);
     toast.success("Booking confirmed successfully!");
+  };
+
+  // Handle close modal
+  const handleCloseBookingModal = () => {
+    setIsBookingModalOpen(false);
+    setSelectedCar(null);
+  };
+
+  // Handle close confirmation
+  const handleCloseConfirmation = () => {
+    setShowConfirmation(false);
+    setCompletedBooking(null);
   };
 
   // Count active filters
@@ -242,6 +249,15 @@ const AvailableCars = () => {
     }
     
     setPriceRange(newRange);
+  };
+
+  // Handle currency toggle
+  const toggleCurrency = () => {
+    if (currency === 'USD') {
+      setCurrency('INR');
+    } else {
+      setCurrency('USD');
+    }
   };
 
   if (loading) {
@@ -351,6 +367,13 @@ const AvailableCars = () => {
                 <span className="action-icon">↺</span>
                 Reset All
               </button>
+              <button 
+                className="quick-action-btn currency-toggle"
+                onClick={toggleCurrency}
+              >
+                <span className="action-icon">💱</span>
+                {currency === 'USD' ? 'Switch to INR' : 'Switch to USD'}
+              </button>
             </div>
           </div>
 
@@ -376,9 +399,9 @@ const AvailableCars = () => {
             <label className="filter-label">Price Range (per day)</label>
             <div className="price-slider-container">
               <div className="price-display">
-                <span>${priceRange[0]}</span>
+                <span>₹{priceRange[0].toLocaleString()}</span>
                 <span> - </span>
-                <span>${priceRange[1]}</span>
+                <span>₹{priceRange[1].toLocaleString()}</span>
               </div>
               <div className="range-inputs">
                 <input
@@ -529,10 +552,7 @@ const AvailableCars = () => {
         <BookingModal
           car={selectedCar}
           isOpen={isBookingModalOpen}
-          onClose={() => {
-            setIsBookingModalOpen(false);
-            setSelectedCar(null);
-          }}
+          onClose={handleCloseBookingModal}
           onBookingComplete={handleBookingComplete}
         />
       )}
@@ -542,10 +562,7 @@ const AvailableCars = () => {
         <BookingConfirmation
           booking={completedBooking}
           isOpen={showConfirmation}
-          onClose={() => {
-            setShowConfirmation(false);
-            setCompletedBooking(null);
-          }}
+          onClose={handleCloseConfirmation}
         />
       )}
 

@@ -99,13 +99,17 @@ export const BookingProvider = ({ children }) => {
 
   // Check if a car is available for given dates
   const isCarAvailable = (carId, pickupDate, returnDate) => {
+    if (!pickupDate || !returnDate) return true;
+    
     const carBookings = state.bookings.filter(b => b.carId === carId && b.status !== 'cancelled');
     
+    // Parse dates as UTC to avoid timezone issues
+    const newPickup = new Date(pickupDate).getTime();
+    const newReturn = new Date(returnDate).getTime();
+    
     for (const booking of carBookings) {
-      const existingPickup = new Date(booking.pickupDate);
-      const existingReturn = new Date(booking.returnDate);
-      const newPickup = new Date(pickupDate);
-      const newReturn = new Date(returnDate);
+      const existingPickup = new Date(booking.pickupDate).getTime();
+      const existingReturn = new Date(booking.returnDate).getTime();
 
       // Check for overlapping dates
       if (
@@ -119,14 +123,39 @@ export const BookingProvider = ({ children }) => {
     return true;
   };
 
-  // Get car availability status
-  const getCarAvailability = (carId) => {
+  // Get car availability status (optionally for specific dates)
+  const getCarAvailability = (carId, pickupDate = null, returnDate = null) => {
     const now = new Date();
-    const carBookings = state.bookings.filter(b => 
+    now.setHours(0, 0, 0, 0);
+    
+    let carBookings = state.bookings.filter(b => 
       b.carId === carId && 
-      b.status !== 'cancelled' &&
-      new Date(b.returnDate) >= now
+      b.status !== 'cancelled'
     );
+    
+    // If specific dates are provided, check for date overlap
+    if (pickupDate && returnDate) {
+      const newPickup = new Date(pickupDate).getTime();
+      const newReturn = new Date(returnDate).getTime();
+      
+      carBookings = carBookings.filter(booking => {
+        const existingPickup = new Date(booking.pickupDate).getTime();
+        const existingReturn = new Date(booking.returnDate).getTime();
+        
+        // Check for overlapping dates
+        return !(
+          (newPickup >= existingPickup && newPickup <= existingReturn) ||
+          (newReturn >= existingPickup && newReturn <= existingReturn) ||
+          (newPickup <= existingPickup && newReturn >= existingReturn)
+        );
+      });
+    } else {
+      // Default: check if car has any active (future) bookings
+      carBookings = carBookings.filter(b => 
+        new Date(b.returnDate).getTime() >= now.getTime()
+      );
+    }
+    
     return carBookings.length === 0;
   };
 
@@ -160,18 +189,24 @@ export const BookingProvider = ({ children }) => {
   // Get active bookings
   const getActiveBookings = () => {
     const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    const nowTime = now.getTime();
+    
     return state.bookings.filter(b => 
       b.status === 'confirmed' && 
-      new Date(b.returnDate) >= now
+      new Date(b.returnDate).getTime() >= nowTime
     );
   };
 
   // Get past bookings
   const getPastBookings = () => {
     const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    const nowTime = now.getTime();
+    
     return state.bookings.filter(b => 
       b.status === 'confirmed' && 
-      new Date(b.returnDate) < now
+      new Date(b.returnDate).getTime() < nowTime
     );
   };
 
@@ -223,13 +258,22 @@ export const BookingProvider = ({ children }) => {
       b.status !== 'cancelled'
     );
     
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
     return carBookings.flatMap(booking => {
       const dates = [];
       const start = new Date(booking.pickupDate);
       const end = new Date(booking.returnDate);
       
-      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-        dates.push(new Date(d).toISOString().split('T')[0]);
+      // Ensure we start from today or later
+      const effectiveStart = start < today ? today : start;
+      
+      for (let d = new Date(effectiveStart); d <= end; d.setDate(d.getDate() + 1)) {
+        const dateStr = new Date(d).toISOString().split('T')[0];
+        if (!dates.includes(dateStr)) {
+          dates.push(dateStr);
+        }
       }
       return dates;
     });

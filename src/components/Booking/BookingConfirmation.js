@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useCurrency } from "../../contexts/CurrencyContext";
 import "./BookingConfirmation.css";
 
-const BookingConfirmation = ({ booking, onClose }) => {
+const BookingConfirmation = ({ booking, onClose, isOpen }) => {
   const navigate = useNavigate();
   const { formatPrice } = useCurrency();
 
-  if (!booking) return null;
+  // Don't render if no booking or not open
+  if (!booking || isOpen === false) return null;
 
   const handleViewBookings = () => {
     onClose();

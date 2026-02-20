@@ -57,7 +57,7 @@ const BookingModal = ({ car, isOpen, onClose, onBookingComplete }) => {
 
   // Validate dates
   useEffect(() => {
-    if (pickupDate && returnDate) {
+    if (pickupDate && returnDate && car) {
       const pickup = new Date(pickupDate);
       const returnD = new Date(returnDate);
       const today = new Date();
@@ -73,14 +73,16 @@ const BookingModal = ({ car, isOpen, onClose, onBookingComplete }) => {
         newErrors.returnDate = "Return date must be after pickup date";
       }
       
-      // Check availability
-      if (!isCarAvailable(car.id, pickupDate, returnDate)) {
-        newErrors.availability = "This car is not available for the selected dates";
+      // Check availability only if we have valid dates
+      if (!newErrors.pickupDate && !newErrors.returnDate) {
+        if (!isCarAvailable(car.id, pickupDate, returnDate)) {
+          newErrors.availability = "This car is not available for the selected dates";
+        }
       }
       
       setErrors(newErrors);
     }
-  }, [pickupDate, returnDate, car.id, isCarAvailable]);
+  }, [pickupDate, returnDate, car, isCarAvailable]);
 
   // Handle date change
   const handlePickupDateChange = (e) => {
@@ -170,28 +172,43 @@ const BookingModal = ({ car, isOpen, onClose, onBookingComplete }) => {
         pricing
       };
       
+      // Create booking and get the result
       const booking = createBooking(bookingData);
       
+      // Show success message
       if (onBookingComplete) {
         onBookingComplete(booking);
       }
       
+      // Reset form state
+      resetForm();
+      
       onClose();
     } catch (error) {
+      console.error('Booking error:', error);
       setErrors({ submit: "Failed to create booking. Please try again." });
     } finally {
       setIsSubmitting(false);
     }
   };
+  
+  // Reset form to initial state
+  const resetForm = () => {
+    setPickupDate("");
+    setReturnDate("");
+    setPickupLocation("");
+    setReturnLocation("");
+    setExtras({ insurance: false, gps: false, childSeat: false });
+    setCustomerInfo({ name: "", email: "", phone: "" });
+    setCurrentStep(1);
+    setErrors({});
+  };
 
   // Get minimum date (today)
   const getMinDate = () => {
-    return new Date().toISOString().split('T')[0];
-  };
-
-  // Check if date is booked
-  const isDateBooked = (dateStr) => {
-    return bookedDates.includes(dateStr);
+    const today = new Date();
+    today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+    return today.toISOString().split('T')[0];
   };
 
   if (!isOpen) return null;
