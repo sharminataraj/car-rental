@@ -302,7 +302,7 @@ export const carApi = {
   createRental: async (rentalData) => {
     try {
       const newRental = {
-        id: Date.now(),
+        id: `BK${Date.now()}${Math.random().toString(36).substr(2, 9).toUpperCase()}`,
         ...rentalData,
         status: "pending",
         createdAt: new Date().toISOString(),
@@ -329,7 +329,7 @@ export const carApi = {
       // Fallback to localStorage if API fails
       const rentals = getStoredRentals();
       const newRental = {
-        id: Date.now(),
+        id: `BK${Date.now()}${Math.random().toString(36).substr(2, 9).toUpperCase()}`,
         ...rentalData,
         status: "pending",
         createdAt: new Date().toISOString(),

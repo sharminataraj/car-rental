@@ -75,7 +75,7 @@ const CarCard = ({ car, onBook, viewMode = "grid" }) => {
     setImageLoaded(true);
   };
 
-  // Check real-time availability
+  // Check real-time availability (no specific dates - general availability)
   const isAvailable = available && getCarAvailability(id);
 
   if (viewMode === "list") {

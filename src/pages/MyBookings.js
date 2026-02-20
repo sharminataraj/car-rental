@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useBooking } from "../contexts/BookingContext";
 import { useCurrency } from "../contexts/CurrencyContext";
@@ -13,9 +13,9 @@ const MyBookings = () => {
   const [cancellingId, setCancellingId] = useState(null);
   const [showCancelConfirm, setShowCancelConfirm] = useState(null);
 
-  // Get active and past bookings
-  const activeBookings = useMemo(() => getActiveBookings(), [bookings]);
-  const pastBookings = useMemo(() => getPastBookings(), [bookings]);
+  // Get active and past bookings directly
+  const activeBookings = getActiveBookings();
+  const pastBookings = getPastBookings();
 
   // Handle cancel booking
   const handleCancelBooking = (bookingId) => {
