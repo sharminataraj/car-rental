@@ -19,17 +19,30 @@ const SimpleLayout = ({ children, onLogout }) => {
             <svg className="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M18.7 19.2c.2 0 .4-.1.5-.2.2-.2.3-.5.2-.7-.3-.6-.7-1.1-1.2-1.6L15 14.2V16c0 .3-.1.5-.3.7-.2.2-.5.3-.7.3H7c-.3 0-.5-.1-.7-.3-.2-.2-.3-.5-.3-.7V8c0-.3.1-.5.3-.7.2-.2.5-.3.7-.3h7c.3 0 .5.1.7.3.2.2.3.5.3.7v1.8l3-2.8c.5-.5.9-1.1 1.2-1.6.1-.2.1-.4.2-.7-.1-.3-.4-.5-.7-.5H4.7c-.3 0-.5.2-.7.5-.2.3-.2.6 0 .8L10 11.2V8.3L3.8 14c-.6.5-.9 1.3-.9 2 0 1.1.9 2 2 2h8c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7V14.2l2.7 2.4c.2.2.4.3.7.3z"/>
             </svg>
-            <h1>InJee Rental</h1>
+            <h4>InJee Rental</h4>
           </div>
         </div>
 
         <nav className="sidebar-nav">
-          <a href="/dashboard" className="nav-item active">
+          <a href="/dashboard" className="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
             <span>Dashboard</span>
+          </a>
+          <a href="/available-cars" className="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <span>Browse Cars</span>
+          </a>
+          <a href="/my-bookings" className="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span>My Bookings</span>
           </a>
           <a href="/vehicles" className="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

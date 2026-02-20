@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./RentalForm.css";
+import { useCurrency } from "../../contexts/CurrencyContext";
 
 const RentalForm = ({ onClose, car, availableCars, onSubmit }) => {
+  const { formatPrice } = useCurrency();
   const [selectedCar, setSelectedCar] = useState(car);
   const [formData, setFormData] = useState({
     customerName: "",
@@ -76,7 +78,7 @@ const RentalForm = ({ onClose, car, availableCars, onSubmit }) => {
                     </div>
                   </div>
                   <div className="car-price">
-                    <span>${car.pricePerDay}/day</span>
+                    <span>{formatPrice(car.pricePerDay)}/day</span>
                   </div>
                 </div>
               ))}

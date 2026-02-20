@@ -18,8 +18,11 @@ import {
 } from "recharts";
 import carApi from "../services/api";
 import "./DashboardHome.css";
+import { useCurrency } from "../contexts/CurrencyContext";
 
 const DashboardHome = () => {
+  const { formatPrice, currency } = useCurrency();
+  
   const [metrics, setMetrics] = useState({
     totalFleet: 0,
     availableVehicles: 0,
@@ -288,14 +291,14 @@ const DashboardHome = () => {
               <line x1="6" y1="20" x2="6" y2="16"/>
             </svg>
           </div>
-          <div className="metric-content">
-            <h3>Daily Revenue</h3>
-            <div className="metric-value">${metrics.dailyRevenue.toLocaleString()}</div>
-            <div className="metric-change positive">
-              <span>↑ 15%</span>
-              <span className="metric-change-label">from yesterday</span>
+            <div className="metric-content">
+              <h3>Daily Revenue</h3>
+              <div className="metric-value">{formatPrice(metrics.dailyRevenue)}</div>
+              <div className="metric-change positive">
+                <span>↑ 15%</span>
+                <span className="metric-change-label">from yesterday</span>
+              </div>
             </div>
-          </div>
         </div>
 
         <div className="metric-card">
@@ -305,30 +308,30 @@ const DashboardHome = () => {
               <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
             </svg>
           </div>
-          <div className="metric-content">
-            <h3>Weekly Revenue</h3>
-            <div className="metric-value">${metrics.weeklyRevenue.toLocaleString()}</div>
-            <div className="metric-change positive">
-              <span>↑ 22%</span>
-              <span className="metric-change-label">from last week</span>
+            <div className="metric-content">
+              <h3>Weekly Revenue</h3>
+              <div className="metric-value">{formatPrice(metrics.weeklyRevenue)}</div>
+              <div className="metric-change positive">
+                <span>↑ 22%</span>
+                <span className="metric-change-label">from last week</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="metric-card">
-          <div className="metric-icon revenue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M18 20V10M8 20V4M3 10h18"/>
-            </svg>
-          </div>
-          <div className="metric-content">
-            <h3>Monthly Revenue</h3>
-            <div className="metric-value">${metrics.monthlyRevenue.toLocaleString()}</div>
-            <div className="metric-change positive">
-              <span>↑ 35%</span>
-              <span className="metric-change-label">from last month</span>
+          <div className="metric-card">
+            <div className="metric-icon revenue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 20V10M8 20V4M3 10h18"/>
+              </svg>
             </div>
-          </div>
+            <div className="metric-content">
+              <h3>Monthly Revenue</h3>
+              <div className="metric-value">{formatPrice(metrics.monthlyRevenue)}</div>
+              <div className="metric-change positive">
+                <span>↑ 35%</span>
+                <span className="metric-change-label">from last month</span>
+              </div>
+            </div>
         </div>
 
         <div className="metric-card">
@@ -401,7 +404,7 @@ const DashboardHome = () => {
               <Tooltip 
                 contentStyle={{ backgroundColor: "white", border: "1px solid #e5e7eb", borderRadius: "8px" }}
                 labelStyle={{ color: "#1f2937", fontWeight: "600" }}
-                formatter={(value) => [`$${value.toLocaleString()}`, "Revenue"]}
+                formatter={(value) => [formatPrice(value), "Revenue"]}
               />
               <Area 
                 type="monotone" 
@@ -466,11 +469,11 @@ const DashboardHome = () => {
             <LineChart data={revenueData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6"/>
               <XAxis dataKey="date" stroke="#6b7280" style={{ fontSize: "12px" }}/>
-              <YAxis stroke="#6b7280" style={{ fontSize: "12px" }} tickFormatter={(value) => `$${value}`}/>
+              <YAxis stroke="#6b7280" style={{ fontSize: "12px" }} tickFormatter={(value) => formatPrice(value).replace('/day', '')}/>
               <Tooltip 
                 contentStyle={{ backgroundColor: "white", border: "1px solid #e5e7eb", borderRadius: "8px" }}
                 labelStyle={{ color: "#1f2937", fontWeight: "600" }}
-                formatter={(value) => [`$${value.toLocaleString()}`, "Revenue"]}
+                formatter={(value) => [formatPrice(value), "Revenue"]}
               />
               <Legend wrapperStyle={{ paddingTop: "20px" }} />
               <Line 

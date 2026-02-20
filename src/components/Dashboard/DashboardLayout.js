@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./DashboardLayout.css";
+import { useCurrency } from "../../contexts/CurrencyContext";
 
 const DashboardLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { currency, switchCurrency } = useCurrency();
 
   // Handle window resize for responsive sidebar
   useEffect(() => {
@@ -192,6 +194,11 @@ const DashboardLayout = ({ children }) => {
           </div>
 
           <div className="header-right">
+            <div className="currency-switch">
+              <button onClick={switchCurrency} className="currency-btn">
+                {currency === 'USD' ? 'USD' : '₹'}
+              </button>
+            </div>
             <div className="notification-bell">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>

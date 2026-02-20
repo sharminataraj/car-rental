@@ -12,6 +12,9 @@ import RentalHistory from "./components/Rentals/RentalHistory";
 import Analytics from "./components/Analytics/Analytics";
 import Maintenance from "./components/Maintenance/Maintenance";
 import Settings from "./components/Settings/Settings";
+import Car3DRenderer from "./pages/Car3DRenderer";
+import AvailableCars from "./pages/AvailableCars";
+import MyBookings from "./pages/MyBookings";
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import Login from "./components/Auth/Login";
 import "./App.css";
@@ -113,6 +116,27 @@ function App() {
             <ProtectedRoute>
               <SimpleLayout onLogout={handleLogout}>
                 <Settings />
+              </SimpleLayout>
+            </ProtectedRoute>
+          } />
+          <Route path="/car-3d/:carId" element={
+            <ProtectedRoute>
+              <SimpleLayout onLogout={handleLogout}>
+                <Car3DRenderer />
+              </SimpleLayout>
+            </ProtectedRoute>
+          } />
+          <Route path="/available-cars" element={
+            <ProtectedRoute>
+              <SimpleLayout onLogout={handleLogout}>
+                <AvailableCars />
+              </SimpleLayout>
+            </ProtectedRoute>
+          } />
+          <Route path="/my-bookings" element={
+            <ProtectedRoute>
+              <SimpleLayout onLogout={handleLogout}>
+                <MyBookings />
               </SimpleLayout>
             </ProtectedRoute>
           } />

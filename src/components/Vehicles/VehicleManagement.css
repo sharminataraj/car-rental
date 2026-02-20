@@ -306,6 +306,12 @@ tbody tr:hover {
   color: #10b981;
 }
 
+.action-btn.view-3d:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #10b981;
+  color: #10b981;
+}
+
 .action-btn svg {
   width: 16px;
   height: 16px;

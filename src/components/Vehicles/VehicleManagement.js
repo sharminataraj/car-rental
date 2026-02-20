@@ -4,8 +4,10 @@ import { ToastContainer, toast } from "react-toastify";
 import carApi from "../../services/api";
 import VehicleForm from "./VehicleForm";
 import "./VehicleManagement.css";
+import { useCurrency } from "../../contexts/CurrencyContext";
 
 const VehicleManagement = () => {
+  const { formatPrice } = useCurrency();
   const [vehicles, setVehicles] = useState([]);
   const [archivedVehicles, setArchivedVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -127,12 +129,12 @@ const VehicleManagement = () => {
     {
       Header: "Price/Day",
       accessor: "pricePerDay",
-      Cell: ({ value }) => `$${value.toFixed(0)}/day`,
+      Cell: ({ value }) => `${formatPrice(value)}/day`,
     },
     {
       Header: "Price/Week",
       accessor: "weeklyPrice",
-      Cell: ({ value }) => value ? `$${value.toFixed(0)}/week` : "-",
+      Cell: ({ value }) => value ? `${formatPrice(value)}/week` : "-",
     },
     {
       Header: "Seats",
@@ -185,7 +187,7 @@ const VehicleManagement = () => {
       accessor: "id",
       Cell: ({ row }) => (
         <div className="action-buttons">
-          {!viewArchived ? (
+           {!viewArchived ? (
             <>
               <button 
                 className="action-btn edit"
@@ -205,6 +207,17 @@ const VehicleManagement = () => {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
                   <polyline points="17 6 23 6 23 12"/>
+                </svg>
+              </button>
+              <button 
+                className="action-btn view-3d"
+                onClick={() => window.location.href = `/car-3d/${row.original.id}`}
+                title="View 3D"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
                 </svg>
               </button>
             </>

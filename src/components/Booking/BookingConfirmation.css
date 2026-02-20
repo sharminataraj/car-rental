@@ -1,0 +1,444 @@
+/* ============================================
+   Booking Confirmation Styles
+   ============================================ */
+
+/* Overlay */
+.confirmation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal */
+.confirmation-modal {
+  background: #ffffff;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: scaleIn 0.4s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Success Animation */
+.success-animation {
+  padding: 2rem 2rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.success-checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: checkmarkPulse 0.6s ease;
+}
+
+@keyframes checkmarkPulse {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.check-icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.icon-line {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 2px;
+  height: 4px;
+}
+
+.line-tip {
+  top: 22px;
+  left: 6px;
+  width: 14px;
+  transform: rotate(45deg);
+  animation: lineTip 0.3s ease 0.3s forwards;
+  opacity: 0;
+}
+
+.line-long {
+  top: 18px;
+  left: 14px;
+  width: 22px;
+  transform: rotate(-45deg);
+  animation: lineLong 0.3s ease 0.4s forwards;
+  opacity: 0;
+}
+
+@keyframes lineTip {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lineLong {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Content */
+.confirmation-content {
+  padding: 0 2rem 2rem;
+  text-align: center;
+}
+
+.confirmation-content h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.confirmation-message {
+  margin: 0.75rem 0 1.5rem;
+  font-size: 0.9375rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Booking Reference */
+.booking-reference {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.booking-reference .label {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.reference-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2563eb;
+  font-family: 'Monaco', 'Menlo', monospace;
+  letter-spacing: 0.05em;
+}
+
+.copy-button {
+  margin-top: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Booking Summary Card */
+.booking-summary-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.summary-header {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.car-image {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.car-details h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.car-category {
+  display: inline-block;
+  margin-top: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-radius: 4px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.summary-details {
+  padding: 1rem;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.detail-icon {
+  font-size: 1rem;
+  margin-top: 0.125rem;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 0.6875rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+/* Price Breakdown */
+.price-breakdown {
+  padding: 1rem;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.375rem 0;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.price-row.total {
+  border-top: 1px solid #e2e8f0;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  font-weight: 600;
+  color: #0f172a;
+  font-size: 0.9375rem;
+}
+
+/* Extras Section */
+.extras-section {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.extras-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.extras-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.extra-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.875rem;
+  background: #f0fdf4;
+  color: #166534;
+  border-radius: 50px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+/* Important Info */
+.important-info {
+  text-align: left;
+  padding: 1rem;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.important-info h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #92400e;
+}
+
+.important-info ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.important-info li {
+  font-size: 0.8125rem;
+  color: #78350f;
+  margin-bottom: 0.375rem;
+  line-height: 1.4;
+}
+
+.important-info li:last-child {
+  margin-bottom: 0;
+}
+
+/* Actions */
+.confirmation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .confirmation-modal {
+    border-radius: 16px;
+  }
+
+  .confirmation-content {
+    padding: 0 1.25rem 1.5rem;
+  }
+
+  .success-animation {
+    padding: 1.5rem 1.5rem 0.75rem;
+  }
+
+  .detail-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .summary-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .car-image {
+    width: 100%;
+    height: 120px;
+  }
+}
+
+/* Scrollbar */
+.confirmation-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.confirmation-modal::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.confirmation-modal::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
